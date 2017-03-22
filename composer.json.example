@@ -1,0 +1,29 @@
+{
+    "require": {
+        "staltrans/rocket-chat-rest-client": "*"
+    },
+    "repositories":[
+        {
+            "type": "package",
+            "package": {
+                "name": "staltrans/rocket-chat-rest-client",
+                "version": "0.1",
+                "description": "Rocket Chat REST API client in PHP",
+                "homepage": "https://github.com/staltrans/rocket-chat-rest-client",
+                "require": {
+                    "nategood/httpful": "*"
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/staltrans/rocket-chat-rest-client",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "psr-0": {
+                        "RocketChat": "src/"
+                    }
+                }
+            }
+        }
+    ]
+}
