@@ -1,6 +1,6 @@
 {
     "name": "staltrans/rocket-chat-rest-client",
-    "version": "0.1",
+    "version": "0.2",
     "description": "Rocket Chat REST API client in PHP",
     "homepage": "https://github.com/staltrans/rocket-chat-rest-client",
     "require": {

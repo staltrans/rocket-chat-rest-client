@@ -17,7 +17,7 @@ class RocketChat {
             ->sendsJson()
             ->expectsJson();
         Request::ini($tmp);
-	}
+    }
 
     public function getUserId() {
         return $this->user_id;
@@ -93,10 +93,10 @@ class RocketChat {
             'username' => $username,
             'password' => $password,
         ));
- 		if($resp->code == 200 && isset($resp->body->status) && $resp->body->status == 'success') {
-	        $this->user_id = $resp->body->data->userId;
-	        $this->auth_token = $resp->body->data->authToken;
-		}
+        if($resp->code == 200 && isset($resp->body->status) && $resp->body->status == 'success') {
+            $this->user_id = $resp->body->data->userId;
+            $this->auth_token = $resp->body->data->authToken;
+        }
         return $resp;
     }
 
@@ -162,8 +162,8 @@ class RocketChat {
      * the callee has access to view
      * https://rocket.chat/docs/developer-guides/rest-api/users/list
      */
-    public function usersList() {
-        return $this->get('users.list');
+    public function usersList($opt = array()) {
+        return $this->get('users.list', $opt);
     }
 
     /**
@@ -359,7 +359,7 @@ class RocketChat {
     public function channelsRename($room_id, $newname) {
         return $this->post('channels.rename', array(
             'roomId' => $room_id,
-            'name'    => $newname
+            'name'   => $newname
         ));
     }
 
@@ -369,7 +369,7 @@ class RocketChat {
      */
     public function channelsSetDescription($room_id, $description) {
         return $this->post('channels.setDescription', array(
-            'roomId'        => $room_id,
+            'roomId'      => $room_id,
             'description' => $description
         ));
     }
@@ -380,7 +380,7 @@ class RocketChat {
      */
     public function channelsSetJoinCode($room_id, $code) {
         return $this->post('channels.setJoinCode', array(
-            'roomId'    => $room_id,
+            'roomId'   => $room_id,
             'joinCode' => $code
         ));
     }
@@ -402,7 +402,7 @@ class RocketChat {
      */
     public function channelsSetReadOnly($room_id, $ro) {
         return $this->post('channels.setReadOnly', array(
-            'roomId'    => $room_id,
+            'roomId'   => $room_id,
             'readOnly' => $ro
         ));
     }
@@ -589,7 +589,7 @@ class RocketChat {
     public function groupsRename($room_id, $newname) {
         return $this->post('groups.rename', array(
             'roomId' => $room_id,
-            'name'    => $newname
+            'name'   => $newname
         ));
     }
 
@@ -599,7 +599,7 @@ class RocketChat {
      */
     public function groupsSetDescription($room_id, $description) {
         return $this->post('groups.setDescription', array(
-            'roomId'        => $room_id,
+            'roomId'      => $room_id,
             'description' => $description
         ));
     }
@@ -621,7 +621,7 @@ class RocketChat {
      */
     public function groupsSetReadOnly($room_id, $ro) {
         return $this->post('groups.setReadOnly', array(
-            'roomId'    => $room_id,
+            'roomId'   => $room_id,
             'readOnly' => $ro
         ));
     }
@@ -644,7 +644,7 @@ class RocketChat {
     public function groupsSetType($room_id, $type) {
         return $this->post('groups.addModerator', array(
             'roomId' => $room_id,
-            'type'    => $type
+            'type'   => $type
         ));
     }
 
@@ -760,7 +760,7 @@ class RocketChat {
         return $this->post('chat.update', array(
             'roomId' => $room_id,
             'msgId'  => $msg_id,
-            'text'    => $text
+            'text'   => $text
         ));
     }
 
@@ -813,7 +813,7 @@ class RocketChat {
      */
     public function integrationsRemove($type, $id) {
         return $this->post('integrations.remove', array(
-            'type'              => $type,
+            'type'           => $type,
             'integrationId'  => $id
         ));
     }
