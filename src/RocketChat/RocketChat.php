@@ -509,8 +509,14 @@ class RocketChat {
      * Retrieves the information about the private group, only if you’re part of the group.
      * https://rocket.chat/docs/developer-guides/rest-api/groups/info
      */
-    public function groupsInfo($room_id) {
-        return $this->get('groups.info', array("roomId=$room_id"));
+    public function groupsInfo($room_id = null, $room_name = null) {
+        if (!empty($room_id)) {
+            return $this->get('groups.info', array("roomId=$room_id"));
+        }
+        if (!empty($room_name)) {
+            $room_name = urlencode($room_name);
+            return $this->get('groups.info', array("roomName=$room_name"));
+        }
     }
 
     /**
