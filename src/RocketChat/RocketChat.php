@@ -465,6 +465,16 @@ class RocketChat {
     }
 
     /**
+     * Gives the role of leader for a user in the currrent group.
+     */
+    public function groupsAddLeader($room_id, $user_id) {
+        return $this->post('groups.addLeader', [
+            'roomId' => $room_id,
+            'userId' => $user_id
+        ]);
+    }
+
+    /**
      * Archives a private group, only if you’re part of the group.
      * https://rocket.chat/docs/developer-guides/rest-api/groups/archive
      */
