@@ -598,6 +598,13 @@ class RocketChat {
         ]);
     }
 
+    public function groupsRemoveLeader($room_id, $user_id) {
+        return $this->post('groups.removeLeader', [
+            'roomId' => $room_id,
+            'userId' => $user_id
+        ]);
+    }
+
     /**
      * Changes the name of the private group.
      * https://rocket.chat/docs/developer-guides/rest-api/groups/rename
