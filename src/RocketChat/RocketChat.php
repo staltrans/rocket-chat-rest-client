@@ -3,6 +3,7 @@
 namespace RocketChat;
 
 use Httpful\Request;
+use Httpful\Mime;
 
 class RocketChat {
 
@@ -847,6 +848,22 @@ class RocketChat {
             'type'           => $type,
             'integrationId'  => $id
         ]);
+    }
+
+    /**
+     * Post a message with attached file to a dedicated room.
+     * https://rocket.chat/docs/developer-guides/rest-api/rooms/upload/
+     */
+    public function roomsUpload($room_id, $file, $msg = '', $description = '') {
+        $request = Request::post($this->url("rooms.upload/$room_id"));
+        $this->addAuthHeaders($request);
+        $data = [
+            'msg' => $msg,
+            'description' => $description
+        ];
+        $response = $request->body($data)->attach(['file' => $file])->send();
+        var_dump($request);
+        return $response;
     }
 
     /**
